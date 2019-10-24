@@ -5,8 +5,6 @@ Sub 拆分工作表()
     
     Dim i As Integer   '辅助工作表变量
     Dim sh As Worksheet
-    Dim workspace As String '设置需要处理的空间
-    workspace = "A2:N984"
     
     '删除多余的工作表
     If Sheets.Count > 1 Then
@@ -22,7 +20,7 @@ Sub 拆分工作表()
     irow = Range("A" & Rows.Count).End(xlUp).Row '计算一共需要处理的行号
     If irow > 2 Then
     
-        Range(workspace & irow).Sort Range("N1"), xlAscending  '对信息区域进行排序，不能含标题
+        Range("A2:N" & irow).Sort Range("N1"), xlAscending  '对信息区域进行排序，不能含标题
         istart = 2
         For i = 2 To irow
             With Worksheets("2019年团员信息表")  '指定活动工作表
@@ -47,7 +45,6 @@ Sub 拆分工作表()
     
     Application.ScreenUpdating = True  '恢复闪屏默认设置
     Application.DisplayAlerts = True   '恢复提示框默认设置
- 
 End Sub
 
 
