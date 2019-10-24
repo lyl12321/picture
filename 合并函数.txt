@@ -1,0 +1,13 @@
+Sub 合并当前工作簿下的所有工作表()
+Application.ScreenUpdating = False
+X = 2
+For j = 1 To Sheets.Count
+	If Sheets(j).Name <> ActiveSheet.Name Then
+    		Y = Sheets(j).Range("A65536").End(xlUp).Row + 1
+		Sheets(j).Range("A2:N" & Y - 1).Copy Cells(X, 1)
+		X = Range("A65536").End(xlUp).Row + 1
+	End If
+Next
+Range("Sheet1").Select
+Application.ScreenUpdating = True
+End Sub
